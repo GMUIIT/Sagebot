@@ -1,0 +1,3 @@
+layout/joystick_layout.axml;layout/joystick_layout.xml
+values/attrs.xml;values/attrs.xml
+values/strings.xml;values/strings.xml
