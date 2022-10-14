@@ -33,6 +33,16 @@ bool deviceConnected = false;
 bool oldDeviceConnected = false;
 uint8_t txValue = 0;
 
+// Motor A
+int motor1Pin1 = 23; 
+int motor1Pin2 = 21; 
+int enable1Pin = 22;
+
+// Motor B
+int motor2Pin1 = 19;
+int motor2Pin2 = 18; 
+int enable2Pin = 5;
+
 /*LED Global Variable
   0 = Flash on and off slowly
   1 = Gradually Brighten
@@ -52,7 +62,7 @@ int fadeAmount = 5;    // how many points to fade the LED by
 Servo myservo;
 const int PINS_LEN = 4;
 const int SENSOR_THRESHOLD = 900;
-int pins [] = {A0,A1,A2,A3};
+int pins [] = {0,1,2,3};
 
 // See the following for generating UUIDs:
 // https://www.uuidgenerator.net/
@@ -78,30 +88,45 @@ void handleIncoming(std::string &command) {
   }
   char cmd = command.at(0);
   switch (cmd) {
-    case 'F':
+    case 5:
       writeString("Moving forwards.");
-      lWheel.write(180);
-      rWheel.write(0);
+      Serial.println("Moving Forward");
+      digitalWrite(motor1Pin1, HIGH);
+      digitalWrite(motor1Pin2, LOW);
+      digitalWrite(motor2Pin1, LOW);
+      digitalWrite(motor2Pin2, HIGH);
       break;
-    case 'B':
+    case 6:
       writeString("Moving back.");
-      lWheel.write(0);
-      rWheel.write(180);
+      Serial.println("Moving Backwards");
+      digitalWrite(motor1Pin1, LOW);
+      digitalWrite(motor1Pin2, HIGH); 
+      digitalWrite(motor2Pin1, HIGH);
+      digitalWrite(motor2Pin2, LOW);
       break;
-    case 'L':
+    case 7:
       writeString("Turning left.");
-      lWheel.write(180);
-      rWheel.write(180);
+      Serial.println("Turning Left");
+      digitalWrite(motor1Pin1, LOW);
+      digitalWrite(motor1Pin2, HIGH); 
+      digitalWrite(motor2Pin1, LOW);
+      digitalWrite(motor2Pin2, HIGH); 
       break;
-    case 'R':
+    case 8:
       writeString("Turning right.");
-      lWheel.write(0);
-      rWheel.write(0);
+      Serial.println("Turning Right");
+      digitalWrite(motor1Pin1, HIGH);
+      digitalWrite(motor1Pin2, LOW); 
+      digitalWrite(motor2Pin1, HIGH);
+      digitalWrite(motor2Pin2, LOW);
       break;
-    case 'S':
+    case 0:
       writeString("Stopping.");
-      lWheel.write(90);
-      rWheel.write(75);
+      Serial.println("Motor stopped");
+      digitalWrite(motor1Pin1, LOW);
+      digitalWrite(motor1Pin2, LOW);
+      digitalWrite(motor2Pin1, LOW);
+      digitalWrite(motor2Pin2, LOW);
       break;
     default:
       writeString("Unknown command " + command);
