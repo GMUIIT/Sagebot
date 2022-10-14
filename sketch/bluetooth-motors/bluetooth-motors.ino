@@ -86,6 +86,7 @@ void handleIncoming(std::string &command) {
   if (command.length() < 1) {
     return;
   }
+  // int cmd = (command.at(2) - '0') * (command.at(3) - '0');
   char cmd = command.at(0);
   switch (cmd) {
     case 5:
@@ -187,7 +188,7 @@ void setup() {
 
   //////// BLE init
   // Create the BLE Device
-  BLEDevice::init("bruh service");
+  BLEDevice::init("Sagebot");
 
   // Create the BLE Server
   pServer = BLEDevice::createServer();

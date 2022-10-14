@@ -61,6 +61,7 @@ namespace SageBot
             }
         }
 
+        // Directly send a string to the UART.
         private async void SendCommandButton_Clicked(object sender, EventArgs e)
         {
             try
