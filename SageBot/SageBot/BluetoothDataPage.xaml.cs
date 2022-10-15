@@ -76,5 +76,24 @@ namespace SageBot
                 Output.Text += "Error sending comand to UART." + Environment.NewLine;
             }
         }
+        
+        //for testing joystick sending uart commands
+        private async void UP_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sendCharacteristic != null)
+                {
+                    var bytes = await sendCharacteristic.WriteAsync(Encoding.ASCII.GetBytes($"{JoystickControl.Distance}"));
+
+
+                }
+
+            }
+            catch
+            {
+                Output.Text += "Error sending comand to UART." + Environment.NewLine;
+            }
+        }
     }
 }
