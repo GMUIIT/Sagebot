@@ -61,6 +61,7 @@
                     </ResourceDictionary>
                 </Grid.Resources>
 
+
                 <Label Text="X:" Grid.Row="0" Grid.Column="1"/>
                 <Label Text="{Binding Xposition}" Grid.Row="0" Grid.Column="2"/>
 
@@ -90,6 +91,21 @@
 
         </Grid>
 
+    </ContentPage>
+
+    <ContentPage Title="Control Pad">
+        <ContentPage.Content>
+            <StackLayout Padding="10"
+                     Orientation="Vertical">
+                <Button x:Name="UP"
+                    Margin="10"
+                    Clicked="UP_Clicked"
+                    Text="UP" />
+                <Button x:Name="DOWN"
+                    Margin="10"
+                    Text="DOWN" />
+            </StackLayout>
+        </ContentPage.Content>
     </ContentPage>
 
 </TabbedPage>

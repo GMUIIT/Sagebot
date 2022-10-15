@@ -1671,11 +1671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
       "projectName": "SageBot.iOS",
-      "projectPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
+      "projectPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
       "packagesPath": "C:\\Users\\Jun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\obj\\",
+      "outputPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1696,8 +1696,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj": {
-              "projectPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj"
+            "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj": {
+              "projectPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj"
             }
           }
         }

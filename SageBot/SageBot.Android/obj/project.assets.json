@@ -4020,11 +4020,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.Android\\SageBot.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.Android\\SageBot.Android.csproj",
       "projectName": "SageBot.Android",
-      "projectPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.Android\\SageBot.Android.csproj",
+      "projectPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.Android\\SageBot.Android.csproj",
       "packagesPath": "C:\\Users\\Jun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.Android\\obj\\",
+      "outputPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -4045,8 +4045,8 @@
       "frameworks": {
         "monoandroid12.0": {
           "projectReferences": {
-            "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj": {
-              "projectPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj"
+            "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj": {
+              "projectPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj": {}
+    "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj": {
+    "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
+        "projectUniqueName": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
         "projectName": "SageBot.iOS",
-        "projectPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
+        "projectPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
         "packagesPath": "C:\\Users\\Jun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot.iOS\\obj\\",
+        "outputPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj": {
-                "projectPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj"
+              "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj": {
+                "projectPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj": {
+    "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj",
+        "projectUniqueName": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj",
         "projectName": "SageBot",
-        "projectPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\SageBot.csproj",
+        "projectPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj",
         "packagesPath": "C:\\Users\\Jun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jun\\source\\repos\\SageBot\\SageBot\\SageBot\\obj\\",
+        "outputPath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

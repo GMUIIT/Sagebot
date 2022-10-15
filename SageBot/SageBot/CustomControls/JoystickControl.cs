@@ -52,7 +52,7 @@ namespace SageBot.CustomControls
         // Conversion to speed: (Distance/100 * 45) + 200
         public double Distance
         {
-            get { return Math.Round((double)GetValue(DistanceProperty), 2); }
+            get { return Math.Round((double)GetValue(DistanceProperty)); }
             set { SetValue(DistanceProperty, value); }
         }
 
