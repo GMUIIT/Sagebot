@@ -38,10 +38,10 @@ namespace SageBot {
         private global::Xamarin.Forms.ListView bltlist;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button UP;
+        private global::Xamarin.Forms.Button ON;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button DOWN;
+        private global::Xamarin.Forms.Button OFF;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
@@ -53,8 +53,8 @@ namespace SageBot {
             JoystickControl = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::SageBot.CustomControls.JoystickControl>(this, "JoystickControl");
             txtErrorBle = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "txtErrorBle");
             bltlist = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "bltlist");
-            UP = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "UP");
-            DOWN = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "DOWN");
+            ON = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ON");
+            OFF = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "OFF");
         }
     }
 }

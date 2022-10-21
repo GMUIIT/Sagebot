@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g1h/Qml3oe93ifqYYnAP495HIPFHXy3ZZd+W1rJR/bXSwuO/d9+ooMC8SA2tjPeNg1qVQnk+Q92Vb8oIFu+rdw==",
+  "dgSpecHash": "v/R1I4HCVy55utuZW7Mk2oQgPCE/JzT/v84Akkhnt6ETkfroH9D/6hyL3myqM0dxYotzB90us6Ogdg3Pjzo7dQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
+  "projectFilePath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot App\\SageBot\\SageBot.iOS\\SageBot.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jun\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Jun\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

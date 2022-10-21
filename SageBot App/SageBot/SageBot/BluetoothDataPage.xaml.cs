@@ -42,7 +42,7 @@ namespace SageBot
                             var receivedBytes = args.Characteristic.Value;
                             XamarinEssentials.MainThread.BeginInvokeOnMainThread(() =>
                             {
-                                Output.Text += Encoding.UTF8.GetString(receivedBytes, 0, receivedBytes.Length) + Environment.NewLine;
+                                //Output.Text += Encoding.UTF8.GetString(receivedBytes, 0, receivedBytes.Length) + Environment.NewLine;
                             });
                         };
 
@@ -76,18 +76,39 @@ namespace SageBot
                 Output.Text += "Error sending comand to UART." + Environment.NewLine;
             }
         }
-        
+
+        bool togglebutton = false;
         //for testing joystick sending uart commands
-        private async void UP_Clicked(object sender, EventArgs e)
+        private async void ON_CLICKED(object sender, EventArgs e)
         {
             try
             {
+                togglebutton = true;
                 if (sendCharacteristic != null)
                 {
-                    var bytes = await sendCharacteristic.WriteAsync(Encoding.ASCII.GetBytes($"{JoystickControl.Distance}"));
+                    while (togglebutton)
+                    {
+                        //if (JoystickControl.Distance > 10)
+                        //{
+                            var bytes = await sendCharacteristic.WriteAsync(Encoding.ASCII.GetBytes($"{JoystickControl.Distance}"));
+                        //}
+                    }
 
 
                 }
+
+            }
+            catch
+            {
+                Output.Text += "Error sending comand to UART." + Environment.NewLine;
+            }
+        }
+
+        private void OFF_CLICKED(object sender, EventArgs e)
+        {
+            try
+            {
+                togglebutton = false;
 
             }
             catch

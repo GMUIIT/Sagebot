@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G9H/di9GYuJSmBat8QDBO424cd5hakJVIMBfJNtauTYh6Rzd67a1fN1ir515qeqQeR0gLPEghhPGAmW/Q+eACQ==",
+  "dgSpecHash": "ZOQs1FkM+T7XxOX6TsYkhLMBxRmhmEmxAsasNax9EGkzVTv2KYd17O0xEXC54OK4A5YO1mu3kRlU4dBrcd0rAg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot.Android\\SageBot.Android.csproj",
+  "projectFilePath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot App\\SageBot\\SageBot.Android\\SageBot.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jun\\.nuget\\packages\\karamunting.android.sparrow007.androidjoystickview\\1.0.2\\karamunting.android.sparrow007.androidjoystickview.1.0.2.nupkg.sha512",
     "C:\\Users\\Jun\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

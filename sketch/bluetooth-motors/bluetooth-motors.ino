@@ -89,7 +89,7 @@ void handleIncoming(std::string &command) {
   // int cmd = (command.at(2) - '0') * (command.at(3) - '0');
   char cmd = command.at(0);
   switch (cmd) {
-    case 5:
+    case 'F':
       writeString("Moving forwards.");
       Serial.println("Moving Forward");
       digitalWrite(motor1Pin1, HIGH);
@@ -97,7 +97,7 @@ void handleIncoming(std::string &command) {
       digitalWrite(motor2Pin1, LOW);
       digitalWrite(motor2Pin2, HIGH);
       break;
-    case 6:
+    case 'B':
       writeString("Moving back.");
       Serial.println("Moving Backwards");
       digitalWrite(motor1Pin1, LOW);
@@ -105,7 +105,7 @@ void handleIncoming(std::string &command) {
       digitalWrite(motor2Pin1, HIGH);
       digitalWrite(motor2Pin2, LOW);
       break;
-    case 7:
+    case 'L':
       writeString("Turning left.");
       Serial.println("Turning Left");
       digitalWrite(motor1Pin1, LOW);
@@ -113,7 +113,7 @@ void handleIncoming(std::string &command) {
       digitalWrite(motor2Pin1, LOW);
       digitalWrite(motor2Pin2, HIGH); 
       break;
-    case 8:
+    case 'R':
       writeString("Turning right.");
       Serial.println("Turning Right");
       digitalWrite(motor1Pin1, HIGH);
@@ -184,7 +184,7 @@ void setup() {
   Serial.begin(9600);
 
   // Setup Bluetooth
-  Serial.begin(115200);
+  //Serial.begin(115200);
 
   //////// BLE init
   // Create the BLE Device
@@ -224,8 +224,8 @@ void loop() {
 
   //TODO: Actually test with this...
   //Reads the IR sensor to detect if Sagebot will fall.
-  sensorRead();
-  lightworks(LEDconfig);
+  //sensorRead();
+  //lightworks(LEDconfig);
 
     // disconnecting
     if (!deviceConnected && oldDeviceConnected) {

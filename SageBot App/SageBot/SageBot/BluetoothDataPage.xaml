@@ -97,13 +97,14 @@
         <ContentPage.Content>
             <StackLayout Padding="10"
                      Orientation="Vertical">
-                <Button x:Name="UP"
+                <Button x:Name="ON"
                     Margin="10"
-                    Clicked="UP_Clicked"
-                    Text="UP" />
-                <Button x:Name="DOWN"
+                    Clicked="ON_CLICKED"
+                    Text="ON" />
+                <Button x:Name="OFF"
                     Margin="10"
-                    Text="DOWN" />
+                    Clicked="OFF_CLICKED"
+                    Text="OFF" />
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>

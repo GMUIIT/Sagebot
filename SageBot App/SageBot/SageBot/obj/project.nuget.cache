@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oKpzAah3xMnczftDesp7r6y77V15Htl8NwSi3Uz1ScXZrvYQfWy4v7CoumObL0OpoLIV0JNyO2ulirnG86VWOg==",
+  "dgSpecHash": "GjkUmeb8CqC4hGgBUwlgGMkUtnJ3LD91Gywug1heqxABTVfREB14O45ra6RkPn282O6o1h97pgv3p0GHbaLg/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot\\SageBot\\SageBot.csproj",
+  "projectFilePath": "C:\\Users\\Jun\\Documents\\GitHub\\Sagebot\\SageBot App\\SageBot\\SageBot\\SageBot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jun\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Jun\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

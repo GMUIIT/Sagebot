@@ -14,3 +14,19 @@ C:\Users\Jun\source\repos\SageBot\SageBot\SageBot\obj\Debug\netstandard2.0\refin
 C:\Users\Jun\source\repos\SageBot\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.pdb
 C:\Users\Jun\source\repos\SageBot\SageBot\SageBot\obj\Debug\netstandard2.0\ref\SageBot.dll
 C:\Users\Jun\source\repos\SageBot\SageBot\SageBot\obj\Debug\netstandard2.0\BluetoothDataPage.xaml.g.cs
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\bin\Debug\netstandard2.0\SageBot.deps.json
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\bin\Debug\netstandard2.0\SageBot.dll
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\bin\Debug\netstandard2.0\SageBot.pdb
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.csproj.AssemblyReference.cache
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\BluetoothDataPage.xaml.g.cs
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.AssemblyInfoInputs.cache
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.AssemblyInfo.cs
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.csproj.CoreCompileInputs.cache
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.dll
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\refint\SageBot.dll
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\SageBot.pdb
+C:\Users\Jun\Documents\GitHub\Sagebot\SageBot App\SageBot\SageBot\obj\Debug\netstandard2.0\ref\SageBot.dll
