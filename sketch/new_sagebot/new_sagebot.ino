@@ -1,46 +1,22 @@
-/*
-    Video: https://www.youtube.com/watch?v=oCMOYS71NIU
-    Based on Neil Kolban example for IDF: https://github.com/nkolban/esp32-snippets/blob/master/cpp_utils/tests/BLE%20Tests/SampleNotify.cpp
-    Ported to Arduino ESP32 by Evandro Copercini
-   Create a BLE server that, once we receive a connection, will send periodic notifications.
-   The service advertises itself as: 6E400001-B5A3-F393-E0A9-E50E24DCCA9E
-   Has a characteristic of: 6E400002-B5A3-F393-E0A9-E50E24DCCA9E - used for receiving data with "WRITE" 
-   Has a characteristic of: 6E400003-B5A3-F393-E0A9-E50E24DCCA9E - used to send data with  "NOTIFY"
-   The design of creating the BLE server is:
-   1. Create a BLE Server
-   2. Create a BLE Service
-   3. Create a BLE Characteristic on the Service
-   4. Create a BLE Descriptor on the characteristic
-   5. Start the service.
-   6. Start advertising.
-   In this example rxValue is the data received (only accessible inside that function).
-   And txValue is the data to be sent, in this example just a byte incremented every second. 
-*/
-#include <BLEDevice.h>
-#include <BLEServer.h>
-#include <BLEUtils.h>
-#include <BLE2902.h>
+#include "TwoWayMotor.h"
+#include "BLEUart.h"
 
-#include <ESP32Servo.h>
+// Function prototypes
+void handleIncoming(std::string &command);
+void lightworks(int LEDconfig);
+void OnAndOff();
+void brighten();
+void dim();
+void sensorRead();
+void off();
+void on();
 
-// BLE globals
-BLEServer *pServer = NULL;
-BLECharacteristic * pTxCharacteristic;
-bool deviceConnected = false;
-bool oldDeviceConnected = false;
-uint8_t txValue = 0;
-
-// Motor A
+// Motors
 TwoWayMotor left(23,22,21);
-
-// Motor B
 TwoWayMotor right(34,35,32);
 
-// Setting Motor PWM properties
-const int freq = 30000;
-const int pwmChannel = 0;
-const int resolution = 8;
-int dutyCycle = 255;
+// BLE
+BLEUart BLE("Sagebot", handleIncoming);
 
 /*LED Global Variable
   0 = Flash on and off slowly
@@ -56,30 +32,22 @@ const byte led_gpio2 = 15;
 // LED Light controls
 int brightness = 0;    // how bright the LED is
 int fadeAmount = 5;    // how many points to fade the LED by
+// PWM parameters for LED
+const int freq = 30000;
+const int pwmChannel = 0;
+const int resolution = 8;
 
 // IR Sensor Variables
-Servo myservo;
 const int PINS_LEN = 4;
 const int SENSOR_THRESHOLD = 900;
 int pins [] = {0,1,2,3};
 
-// See the following for generating UUIDs:
-// https://www.uuidgenerator.net/
-
-#define SERVICE_UUID           "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" // UART service UUID
-#define CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
-#define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
-
-/**
- * Write the given string to the virtual serial port.
- */
-void writeString(std::string str) {
-    pTxCharacteristic->setValue((uint8_t*)str.c_str(), str.length());
-    pTxCharacteristic->notify();
-    delay(10); // bluetooth stack will go into congestion, if too many packets are sent
-}
-
 void handleIncoming(std::string &command) {
+  // Echo command to serial for debugging purposes.
+  Serial.println("*************");
+  Serial.printf("Received value: %s\n", command.c_str());
+  Serial.println("*************");
+  
   // First character is always the command name.
   // Min length is 1 (S)
   if (command.length() < 1) {
@@ -89,79 +57,52 @@ void handleIncoming(std::string &command) {
   char cmd = command.at(0);
   switch (cmd) {
     case 'F':
-      writeString("Moving forwards.");
+      BLE.write("Moving forwards.");
       Serial.println("Moving Forward");
       left.write(255);
       right.write(255);
 
       break;
     case 'B':
-      writeString("Moving back.");
+      BLE.write("Moving back.");
       Serial.println("Moving Backwards");
       left.write(-255);
       right.write(-255);
     
       break;
     case 'L':
-      writeString("Turning left.");
+      BLE.write("Turning left.");
       Serial.println("Turning Left");
       left.write(255);
       right.write(-255);
       
       break;
     case 'R':
-      writeString("Turning right.");
+      BLE.write("Turning right.");
       Serial.println("Turning Right");
       left.write(-255);
       right.write(255);
       
       break;
     case 'S':
-      writeString("Stopping.");
+      BLE.write("Stopping.");
       Serial.println("Motor stopped");
       left.write(0);
       right.write(0);
       
       break;
     default:
-      writeString("Unknown command " + command);
+      BLE.write("Unknown command " + command);
       break;
   }
   
 }
 
-class MyServerCallbacks: public BLEServerCallbacks {
-    void onConnect(BLEServer* pServer) {
-      deviceConnected = true;
-    };
-
-    void onDisconnect(BLEServer* pServer) {
-      deviceConnected = false;
-    }
-};
-
-class MyCallbacks: public BLECharacteristicCallbacks {
-    void onWrite(BLECharacteristic *pCharacteristic) {
-      std::string rxValue = pCharacteristic->getValue();
-
-      if (rxValue.length() > 0) {
-        Serial.println("*********");
-        Serial.print("Received Value: ");
-        for (int i = 0; i < rxValue.length(); i++)
-          Serial.print(rxValue[i]);
-
-        Serial.println();
-        Serial.println("*********");
-        handleIncoming(rxValue);
-      }
-    }
-};
 
 void setup() {
 
   // Initialize channels
   // channels 0-15, resolution 1-16 bits, freq limits depend on resolution
-  // ledcSetup(uint8_t channel, uint32_t freq, uint8_t resolution_bits);
   ledcSetup(0, 4000, 8); // 12 kHz PWM, 8-bit resolution
   ledcSetup(1, 4000, 8);
   ledcSetup(pwmChannel, freq, resolution);
@@ -171,71 +112,43 @@ void setup() {
   ledcAttachPin(led_gpio2, 2);
   
   // Set up the IR sensor.
-  myservo.attach(6);
   for (int i = 0; i < PINS_LEN; i++) {
     pinMode(pins[i], INPUT);
   }
   attachInterrupt(2, sensorRead, RISING);
   Serial.begin(9600);
+  
+  //Setup motors
+  left.init();
+  right.init();
 
   // Setup Bluetooth
-  //Serial.begin(115200);
-
-  //////// BLE init
-  // Create the BLE Device
-  BLEDevice::init("Sagebot");
-
-  // Create the BLE Server
-  pServer = BLEDevice::createServer();
-  pServer->setCallbacks(new MyServerCallbacks());
-
-  // Create the BLE Service
-  BLEService *pService = pServer->createService(SERVICE_UUID);
-
-  // Create a BLE Characteristic
-  pTxCharacteristic = pService->createCharacteristic(
-                    CHARACTERISTIC_UUID_TX,
-                    BLECharacteristic::PROPERTY_NOTIFY
-                  );
-                      
-  pTxCharacteristic->addDescriptor(new BLE2902());
-
-  BLECharacteristic * pRxCharacteristic = pService->createCharacteristic(
-                       CHARACTERISTIC_UUID_RX,
-                      BLECharacteristic::PROPERTY_WRITE
-                    );
-
-  pRxCharacteristic->setCallbacks(new MyCallbacks());
-
-  // Start the service
-  pService->start();
-
-  // Start advertising
-  pServer->getAdvertising()->start();
-  Serial.println("Waiting a client connection to notify...");
+  BLE.init();
 }
 
 void loop() {
-
   //TODO: Actually test with this...
   //Reads the IR sensor to detect if Sagebot will fall.
   //sensorRead();
   //lightworks(LEDconfig);
-
-    // disconnecting
-    if (!deviceConnected && oldDeviceConnected) {
-        delay(500); // give the bluetooth stack the chance to get things ready
-        pServer->startAdvertising(); // restart advertising
-        Serial.println("start advertising");
-        oldDeviceConnected = deviceConnected;
-    }
-    // connecting
-    if (deviceConnected && !oldDeviceConnected) {
-        // do stuff here on connecting
-        oldDeviceConnected = deviceConnected;
-    }
-
 }
+
+// IR Sensor reading.
+void sensorRead(){
+  for(int i = 0; i < PINS_LEN; i++){
+    if(analogRead(pins[i]) > SENSOR_THRESHOLD){
+      std::string s("S");
+      Serial.println("SENSOR STOP!");
+      handleIncoming(s);
+      break;
+    }
+  }
+}
+
+/*****************************************************/
+/*              LED-MANAGEMENT FUNCTIONS             */
+/*****************************************************/
+// TODO: turn this into a class.  One class per LED?
 
 // Light managing function.
 void lightworks(int LEDconfig){
@@ -316,16 +229,4 @@ void on() {
 void off() {
   ledcWrite(0, 0); // set the brightness of the LED
   ledcWrite(1, 0);
-}
-
-// IR Sensor reading.
-void sensorRead(){
-  for(int i = 0; i < PINS_LEN; i++){
-    if(analogRead(pins[i]) > SENSOR_THRESHOLD){
-      std::string s("S");
-      Serial.println("STOP");
-      handleIncoming(s);
-      break;
-    }
-  }
 }

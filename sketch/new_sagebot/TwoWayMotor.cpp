@@ -1,12 +1,10 @@
-class TwoWayMotor {
-  private:
-    int dirPinA, dirPinB, enPin;
-  public:
-    TwoWayMotor(int dirPinA, int dirPinB, int enPin):
-      dirPinA(dirPinA), dirPinB(dirPinB), enPin(enPin) {
-      }
+#include <Arduino.h>
+#include "TwoWayMotor.h"
 
-      void init() {
+#ifndef TWO_WAY_MOTOR_CPP
+#define TWO_WAY_MOTOR_CPP
+
+      void TwoWayMotor::init() {
         pinMode(dirPinA, OUTPUT);
         pinMode(dirPinB, OUTPUT);
         pinMode(enPin, OUTPUT);
@@ -14,8 +12,8 @@ class TwoWayMotor {
         digitalWrite(dirPinB, LOW);
         digitalWrite(enPin, LOW);
       }
-
-      void write(int amount){
+      
+      void TwoWayMotor::write(int amount){
         if (amount < -255 || amount > 255) {
           return;
         }
@@ -32,4 +30,5 @@ class TwoWayMotor {
         }
         analogWrite(enPin, amount);
       }
-};sj fnskdfj kdsfnjkds jknsdf
+
+#endif
