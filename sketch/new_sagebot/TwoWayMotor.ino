@@ -32,4 +32,4 @@ class TwoWayMotor {
         }
         analogWrite(enPin, amount);
       }
-};
+};sj fnskdfj kdsfnjkds jknsdf

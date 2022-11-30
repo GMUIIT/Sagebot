@@ -31,14 +31,10 @@ bool oldDeviceConnected = false;
 uint8_t txValue = 0;
 
 // Motor A
-int motor1Pin1 = 23; 
-int motor1Pin2 = 22; 
-int enable1Pin = 21;
+TwoWayMotor left(23,22,21);
 
 // Motor B
-int motor2Pin1 = 34;
-int motor2Pin2 = 35; 
-int enable2Pin = 32;
+TwoWayMotor right(34,35,32);
 
 // Setting Motor PWM properties
 const int freq = 30000;
@@ -95,57 +91,37 @@ void handleIncoming(std::string &command) {
     case 'F':
       writeString("Moving forwards.");
       Serial.println("Moving Forward");
-      digitalWrite(enable1Pin, HIGH); 
-      digitalWrite(enable2Pin, HIGH); 
+      left.write(255);
+      right.write(255);
 
-      digitalWrite(motor1Pin1, HIGH);
-      digitalWrite(motor1Pin2, LOW);
-      digitalWrite(motor2Pin1, LOW);
-      digitalWrite(motor2Pin2, HIGH);
       break;
     case 'B':
       writeString("Moving back.");
       Serial.println("Moving Backwards");
-      digitalWrite(enable1Pin, HIGH); 
-      digitalWrite(enable2Pin, HIGH);
-       
-      digitalWrite(motor1Pin1, LOW);
-      digitalWrite(motor1Pin2, HIGH); 
-      digitalWrite(motor2Pin1, HIGH);
-      digitalWrite(motor2Pin2, LOW);
+      left.write(-255);
+      right.write(-255);
+    
       break;
     case 'L':
       writeString("Turning left.");
       Serial.println("Turning Left");
-      digitalWrite(enable1Pin, HIGH); 
-      digitalWrite(enable2Pin, HIGH); 
+      left.write(255);
+      right.write(-255);
       
-      digitalWrite(motor1Pin1, LOW);
-      digitalWrite(motor1Pin2, HIGH); 
-      digitalWrite(motor2Pin1, LOW);
-      digitalWrite(motor2Pin2, HIGH); 
       break;
     case 'R':
       writeString("Turning right.");
       Serial.println("Turning Right");
-       digitalWrite(enable1Pin, HIGH); 
-      digitalWrite(enable2Pin, HIGH); 
+      left.write(-255);
+      right.write(255);
       
-      digitalWrite(motor1Pin1, HIGH);
-      digitalWrite(motor1Pin2, LOW); 
-      digitalWrite(motor2Pin1, HIGH);
-      digitalWrite(motor2Pin2, LOW);
       break;
     case 'S':
       writeString("Stopping.");
       Serial.println("Motor stopped");
-      digitalWrite(enable1Pin, HIGH); 
-      digitalWrite(enable2Pin, HIGH); 
+      left.write(0);
+      right.write(0);
       
-      digitalWrite(motor1Pin1, LOW);
-      digitalWrite(motor1Pin2, LOW);
-      digitalWrite(motor2Pin1, LOW);
-      digitalWrite(motor2Pin2, LOW);
       break;
     default:
       writeString("Unknown command " + command);
@@ -193,14 +169,6 @@ void setup() {
   //Set up the LEDs.
   ledcAttachPin(led_gpio, 1); // assign a led pins to a channel
   ledcAttachPin(led_gpio2, 2);
-
-  pinMode(motor1Pin1, OUTPUT);
-  pinMode(motor1Pin2, OUTPUT);
-  pinMode(enable1Pin, OUTPUT);
-  
-  pinMode(motor2Pin1, OUTPUT);
-  pinMode(motor2Pin2, OUTPUT);
-  pinMode(enable2Pin, OUTPUT);
   
   // Set up the IR sensor.
   myservo.attach(6);
