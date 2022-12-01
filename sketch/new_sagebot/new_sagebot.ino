@@ -12,8 +12,8 @@ void off();
 void on();
 
 // Motors
-TwoWayMotor left(23,22,21);
-TwoWayMotor right(34,35,32);
+TwoWayMotor left(22,1,21);
+TwoWayMotor right(25,26,32);
 
 // BLE
 BLEUart BLE("Sagebot", handleIncoming);
@@ -56,6 +56,36 @@ void handleIncoming(std::string &command) {
   // int cmd = (command.at(2) - '0') * (command.at(3) - '0');
   char cmd = command.at(0);
   switch (cmd) {
+    case 'T':
+      BLE.write("Moving forwards.");
+      Serial.println("Moving Forward");
+      left.write(255);
+      right.write(255);
+
+      delay(2000);
+      
+      BLE.write("Moving back.");
+      Serial.println("Moving Backwards");
+      left.write(-255);
+      right.write(-255);
+
+      delay(2000);
+            
+      BLE.write("Turning left.");
+      Serial.println("Turning Left");
+      left.write(255);
+      right.write(-255);
+
+      delay(2000);
+            
+      BLE.write("Turning right.");
+      Serial.println("Turning Right");
+      left.write(-255);
+      right.write(255);
+
+      delay(2000);
+      
+      break;
     case 'F':
       BLE.write("Moving forwards.");
       Serial.println("Moving Forward");
@@ -104,17 +134,19 @@ void setup() {
   // Initialize channels
   // channels 0-15, resolution 1-16 bits, freq limits depend on resolution
   ledcSetup(0, 4000, 8); // 12 kHz PWM, 8-bit resolution
-  ledcSetup(1, 4000, 8);
+  //ledcSetup(1, 4000, 8);
   ledcSetup(pwmChannel, freq, resolution);
 
   //Set up the LEDs.
-  ledcAttachPin(led_gpio, 1); // assign a led pins to a channel
+  //ledcAttachPin(led_gpio, 1); // assign a led pins to a channel
   ledcAttachPin(led_gpio2, 2);
   
   // Set up the IR sensor.
+  /*
   for (int i = 0; i < PINS_LEN; i++) {
     pinMode(pins[i], INPUT);
   }
+  */
   attachInterrupt(2, sensorRead, RISING);
   Serial.begin(9600);
   

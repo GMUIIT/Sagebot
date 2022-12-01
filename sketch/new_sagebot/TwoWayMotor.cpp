@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "TwoWayMotor.h"
-
+#define analogWrite ledcWrite
 #ifndef TWO_WAY_MOTOR_CPP
 #define TWO_WAY_MOTOR_CPP
 
