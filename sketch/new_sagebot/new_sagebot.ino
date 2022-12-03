@@ -10,10 +10,10 @@ void dim();
 void sensorRead();
 void off();
 void on();
-
 // Motors
-TwoWayMotor left(22,1,21);
-TwoWayMotor right(25,26,32);
+// Pins are IN1, IN2, ENA
+TwoWayMotor left(22, 1, 19);
+TwoWayMotor right(25, 26, 12);
 
 // BLE
 BLEUart BLE("Sagebot", handleIncoming);
@@ -57,33 +57,31 @@ void handleIncoming(std::string &command) {
   char cmd = command.at(0);
   switch (cmd) {
     case 'T':
-      BLE.write("Moving forwards.");
-      Serial.println("Moving Forward");
-      left.write(255);
-      right.write(255);
+      for (int i = 0; i < 3; i++) {
+        BLE.write("Moving forwards.\n");
+        left.write(255);
+        right.write(255);
 
-      delay(2000);
-      
-      BLE.write("Moving back.");
-      Serial.println("Moving Backwards");
-      left.write(-255);
-      right.write(-255);
+        delay(2000);
+        
+        BLE.write("Moving back.\n");
+        left.write(-255);
+        right.write(-255);
 
-      delay(2000);
-            
-      BLE.write("Turning left.");
-      Serial.println("Turning Left");
-      left.write(255);
-      right.write(-255);
+        delay(2000);
+              
+        BLE.write("Turning left.\n");
+        left.write(255);
+        right.write(-255);
 
-      delay(2000);
-            
-      BLE.write("Turning right.");
-      Serial.println("Turning Right");
-      left.write(-255);
-      right.write(255);
+        delay(2000);
+              
+        BLE.write("Turning right.\n");
+        left.write(-255);
+        right.write(255);
 
-      delay(2000);
+        delay(2000);
+      }
       
       break;
     case 'F':
