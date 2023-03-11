@@ -1,6 +1,8 @@
 #include "TwoWayMotor.h"
 #include "BLEUart.h"
 
+#define SPEED 100
+
 // Function prototypes
 void handleIncoming(std::string &command);
 void lightworks(int LEDconfig);
@@ -10,9 +12,10 @@ void dim();
 void sensorRead();
 void off();
 void on();
+
 // Motors
 // Pins are IN1, IN2, ENA
-TwoWayMotor left(22, 1, 19);
+TwoWayMotor left(22, 23, 19);
 TwoWayMotor right(25, 26, 12);
 
 // BLE
@@ -59,26 +62,26 @@ void handleIncoming(std::string &command) {
     case 'T':
       for (int i = 0; i < 3; i++) {
         BLE.write("Moving forwards.\n");
-        left.write(255);
-        right.write(255);
+        left.write(SPEED);
+        right.write(SPEED);
 
         delay(2000);
         
         BLE.write("Moving back.\n");
-        left.write(-255);
-        right.write(-255);
+        left.write(-SPEED);
+        right.write(-SPEED);
 
         delay(2000);
               
         BLE.write("Turning left.\n");
-        left.write(255);
-        right.write(-255);
+        left.write(SPEED);
+        right.write(-SPEED);
 
         delay(2000);
               
         BLE.write("Turning right.\n");
-        left.write(-255);
-        right.write(255);
+        left.write(-SPEED);
+        right.write(SPEED);
 
         delay(2000);
       }
@@ -87,29 +90,29 @@ void handleIncoming(std::string &command) {
     case 'F':
       BLE.write("Moving forwards.");
       Serial.println("Moving Forward");
-      left.write(255);
-      right.write(255);
+      left.write(SPEED);
+      right.write(SPEED);
 
       break;
     case 'B':
       BLE.write("Moving back.");
       Serial.println("Moving Backwards");
-      left.write(-255);
-      right.write(-255);
+      left.write(-SPEED);
+      right.write(-SPEED);
     
       break;
     case 'L':
       BLE.write("Turning left.");
       Serial.println("Turning Left");
-      left.write(255);
-      right.write(-255);
+      left.write(-SPEED);
+      right.write(SPEED);
       
       break;
     case 'R':
       BLE.write("Turning right.");
       Serial.println("Turning Right");
-      left.write(-255);
-      right.write(255);
+      left.write(SPEED);
+      right.write(-SPEED);
       
       break;
     case 'S':
@@ -151,6 +154,7 @@ void setup() {
   //Setup motors
   left.init();
   right.init();
+
 
   // Setup Bluetooth
   BLE.init();
